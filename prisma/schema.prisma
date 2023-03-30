@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("mysql+mysqldb://root:root@localhost:3306")
+}
+
+model Teacher {
+  id            Int       @id @default(autoincrement())
+  firstName     String
+  lastName      String
+  email         String    @unique
+  birthDate     DateTime
+  country       String
+  city          String
+  address       String
+  joinedCompany DateTime  @default(now())
+  leftCompany   DateTime?
+}
+
+model Student {
+  id        Int      @id @default(autoincrement())
+  fristName String
+  lastName  String
+  birthDate DateTime
+  country   String
+  city      String
+  address   String
+  tutorId   String
+}
+
+model HoursWorked {
+  id             Int    @id @default(autoincrement())
+  // teacherId 
+  // studentId
+  hoursJanuary   String // json psql
+  hoursFebruary  String // json psql
+  hoursMarch     String // json psql
+  hoursApril     String // json psql
+  hoursMay       String // json psql
+  hoursJune      String // json psql
+  hoursJuly      String // json psql
+  hoursAugust    String // json psql
+  hoursSeptember String // json psql
+  hoursOctober   String // json psql
+  hoursNovember  String // json psql
+  hoursDecember  String // json psql
+}
