@@ -25,7 +25,7 @@ model Teacher {
 
 model Student {
   id        Int      @id @default(autoincrement())
-  fristName String
+  firstName String
   lastName  String
   birthDate DateTime
   country   String
@@ -35,19 +35,19 @@ model Student {
 }
 
 model HoursWorked {
-  id             Int    @id @default(autoincrement())
+  id             Int     @id @default(autoincrement())
   teacherId      Int
   studentId      Int
-  hoursJanuary   String // json psql
-  hoursFebruary  String // json psql
-  hoursMarch     String // json psql
-  hoursApril     String // json psql
-  hoursMay       String // json psql
-  hoursJune      String // json psql
-  hoursJuly      String // json psql
-  hoursAugust    String // json psql
-  hoursSeptember String // json psql
-  hoursOctober   String // json psql
-  hoursNovember  String // json psql
-  hoursDecember  String // json psql
+  hoursJanuary   String? // json psql
+  hoursFebruary  String? // json psql
+  hoursMarch     String? // json psql
+  hoursApril     String? // json psql
+  hoursMay       String? // json psql
+  hoursJune      String? // json psql
+  hoursJuly      String? // json psql
+  hoursAugust    String? // json psql
+  hoursSeptember String? // json psql
+  hoursOctober   String? // json psql
+  hoursNovember  String? // json psql
+  hoursDecember  String? // json psql
 }

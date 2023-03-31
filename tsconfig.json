@@ -4,5 +4,7 @@
     "outDir": "dist",
     "strict": true,
     "lib": ["ESNext"],
-    "esModuleInterop": true
-  }   }
+    "esModuleInterop": true,
+    "paths": {
+      "@prisma/*": ["./prisma/*"]}}
+  }

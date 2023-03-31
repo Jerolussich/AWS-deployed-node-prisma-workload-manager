@@ -2,10 +2,11 @@ CREATE DATABASE IF NOT EXISTS WorkloadManager;
 
 DO $ $ BEGIN IF NOT EXISTS (
     SELECT
+        1
     FROM
-        pg_user
+        \ pg_roles
     WHERE
-        usename = 'postgres'
+        rolname = 'postgres'
 ) THEN CREATE USER postgres WITH PASSWORD 'holberton';
 
 END IF;
