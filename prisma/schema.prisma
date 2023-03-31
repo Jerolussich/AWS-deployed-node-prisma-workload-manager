@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("mysql+mysqldb://root:root@localhost:3306")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Teacher {
@@ -36,8 +36,8 @@ model Student {
 
 model HoursWorked {
   id             Int    @id @default(autoincrement())
-  // teacherId 
-  // studentId
+  teacherId      Int
+  studentId      Int
   hoursJanuary   String // json psql
   hoursFebruary  String // json psql
   hoursMarch     String // json psql
