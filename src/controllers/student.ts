@@ -52,3 +52,24 @@ export const updateStudent = async (req: Request, res: Response) => {
 
     res.json(updatedStudent);
 };
+
+export const createStudent = async (req: Request, res: Response) => {
+    
+    const student = await prisma.student.findFirst();
+
+    const attributeList = Object.keys(student || {});
+
+    const data: any = {};
+
+    Object.keys(req.body).forEach((element: string) => {
+        if (attributeList.includes(element)) {
+            data[element] = req.body[element];
+        }
+    });
+
+    const createStudent = await prisma.student.create({
+        data,
+    });
+
+    res.json(createStudent);
+};

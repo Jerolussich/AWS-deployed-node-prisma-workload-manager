@@ -52,3 +52,24 @@ export const updateTeacher = async (req: Request, res: Response) => {
 
     res.json(updatedTeacher);
 };
+
+export const createTeacher = async (req: Request, res: Response) => {
+    
+    const teacher = await prisma.teacher.findFirst();
+
+    const attributeList = Object.keys(teacher || {});
+
+    const data: any = {};
+
+    Object.keys(req.body).forEach((element: string) => {
+        if (attributeList.includes(element)) {
+            data[element] = req.body[element];
+        }
+    });
+
+    const createdTeacher = await prisma.teacher.create({
+        data,
+    });
+
+    res.json(createdTeacher);
+}

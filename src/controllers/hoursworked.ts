@@ -53,3 +53,23 @@ export const updateHoursworked = async (req: Request, res: Response) => {
 
     res.json(updatedHoursworked);
 };
+
+export const createHoursworked = async (req: Request, res: Response) => {
+    
+    const hoursWorked = await prisma.hoursWorked.findFirst();
+    const attributeList = Object.keys(hoursWorked || {});
+
+    const data: any = {};
+
+    Object.keys(req.body).forEach((element: string) => {
+        if (attributeList.includes(element)) {
+            data[element] = req.body[element];
+        }
+    });
+
+    const createHoursworked = await prisma.hoursWorked.create({
+        data,
+    });
+
+    res.json(createHoursworked);
+};
