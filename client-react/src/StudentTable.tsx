@@ -2,10 +2,10 @@ import React, {useEffect, useState} from 'react'
 
 export default function StudentTable() {
 
-    const [student, setStudent] = useState<any[]>([]);
+    const [students, setStudent] = useState<any[]>([]);
 
     function fetchData() {
-      fetch('/student')
+      fetch('http://localhost:3000/student')
         .then(response => response.json())
         .then(data => setStudent(data));
     }
@@ -15,17 +15,17 @@ export default function StudentTable() {
     }, []);
   
     const handleDelete = (id: Number) => {
-      fetch(`/student/${id}`, {
+      fetch(`/http://localhost:3000/student/${id}`, {
         method: 'DELETE',
       })
         .then(() => {
-          const updatedStudent = student.filter(task => task.id !== id);
+          const updatedStudent = students.filter(students => students.id !== id);
           setStudent(updatedStudent);
         });
     }
   
     const handleUpdate = (id: Number, updatedStudent:JSON) => {
-      fetch(`/student/${id}`, {
+      fetch(`http://localhost:3000/student/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ export default function StudentTable() {
   
     const handleCreation = (creationPackage: JSON) => {
   
-      fetch(`/student`, {
+      fetch(`http://localhost:3000/student`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -48,7 +48,41 @@ export default function StudentTable() {
     }
     return (
         <>
-        <h1 className="font-semibold">Student</h1>
+         <div className='studentContainer'>
+      <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Birth Date</th>
+                <th>Country</th>
+                <th>City</th>
+                <th>Address</th>
+                <th>Tutor Id</th>
+            </tr>
+        </thead>
+      <tbody>
+        {students.map(student => (
+          
+        <tr key={student.id}>
+
+                <td className='p-2'>{student.id}</td>
+                <td className='p-2'>{student.firstName}</td>
+                <td className='p-2'>{student.lastName}</td>
+                <td className='p-2'>{student.birthDate}</td>
+                <td className='p-2'>{student.country}</td>
+                <td className='p-2'>{student.city}</td>
+                <td className='p-2'>{student.address}</td>
+                <td className='p-2'>{student.tutorId}</td>
+                
+
+        </tr>
+
+))}
+      </tbody>
+      </table>
+    </div>
         </>
     )
 }
