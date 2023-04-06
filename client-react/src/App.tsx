@@ -1,11 +1,16 @@
 import React, {useEffect, useState} from 'react'
-import StudentTable from './StudentTable'
+import StudentTable from './components/StudentTable'
+import TeacherTable from './components/TeacherTable'
+import HoursworkedTable from './components/HoursworkedTable'
+import Navbar from './components/Navbar'
+import './App.css';
+
 
 function App() {
   
   return (
     <>
-      <StudentTable/>
+      <Navbar/>
       <div>Welcome</div>
     </>
   )
