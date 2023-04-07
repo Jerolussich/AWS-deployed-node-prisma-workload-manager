@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import Navbar from './Navbar'
 
 export default function TeacherTable() {
 
@@ -48,6 +49,7 @@ export default function TeacherTable() {
     }
     return (
         <>
+        <Navbar/>
          <div className='teacherContainer'>
       <table>
         <thead>

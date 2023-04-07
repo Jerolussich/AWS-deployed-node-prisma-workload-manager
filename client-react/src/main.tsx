@@ -11,6 +11,8 @@ import {
 import StudentTable from './components/StudentTable';
 import HoursworkedTable from './components/HoursworkedTable';
 import TeacherTable from './components/TeacherTable';
+import Login from './components/Login';
+import Register from './components/Register';
 
 
 const router = createBrowserRouter([
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
   {
     path: "/hoursworked",
     element: <HoursworkedTable/>,
+  },
+  {
+    path: "/login",
+    element: <Login/>,
+  },
+  {
+    path: "/register",
+    element: <Register/>,
   },
 ]);
 

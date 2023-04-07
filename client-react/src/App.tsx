@@ -1,17 +1,24 @@
 import React, {useEffect, useState} from 'react'
-import StudentTable from './components/StudentTable'
-import TeacherTable from './components/TeacherTable'
+
 import HoursworkedTable from './components/HoursworkedTable'
 import Navbar from './components/Navbar'
 import './App.css';
+import Login from './components/Login';
+import Register from './components/Register';
 
 
 function App() {
+
+  const [currentForm, setCurrentForm] = useState("login");
+
+  const toggleform = (formName :any) => {
+    setCurrentForm(formName);
+  }
   
   return (
     <>
       <Navbar/>
-      <div>Welcome</div>
+      <h1>Welcome</h1>
     </>
   )
 }

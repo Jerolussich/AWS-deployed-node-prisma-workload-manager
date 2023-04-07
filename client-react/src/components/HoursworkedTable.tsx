@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import Navbar from './Navbar'
 
 export default function HoursworkedTable() {
 
@@ -48,6 +49,7 @@ export default function HoursworkedTable() {
     }
     return (
         <>
+        <Navbar/>
          <div className='hoursworkedContainer'>
       <table>
         <thead>
