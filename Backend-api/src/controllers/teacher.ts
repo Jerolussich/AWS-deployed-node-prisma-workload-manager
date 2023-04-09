@@ -54,22 +54,21 @@ export const updateTeacher = async (req: Request, res: Response) => {
 };
 
 export const createTeacher = async (req: Request, res: Response) => {
-    
-    const teacher = await prisma.teacher.findFirst();
-
-    const attributeList = Object.keys(teacher || {});
-
-    const data: any = {};
-
-    Object.keys(req.body).forEach((element: string) => {
-        if (attributeList.includes(element)) {
-            data[element] = req.body[element];
-        }
-    });
+    const data = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        birthDate: new Date(req.body.birthDate),
+        country: req.body.country,
+        city: req.body.city,
+        address: req.body.address,
+        joinedCompany: new Date(req.body.joinedCompany),
+        leftCompany: req.body.leftCompany ? new Date(req.body.leftCompany) : null,
+    };
 
     const createdTeacher = await prisma.teacher.create({
         data,
     });
 
     res.json(createdTeacher);
-}
+};

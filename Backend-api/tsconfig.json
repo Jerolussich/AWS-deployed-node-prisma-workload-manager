@@ -6,6 +6,8 @@
     "lib": ["ESNext", "DOM"],
     "esModuleInterop": true,
     "jsx": "react",
+    
     "paths": {
       "@prisma/*": ["./prisma/*"]}}
+
   }

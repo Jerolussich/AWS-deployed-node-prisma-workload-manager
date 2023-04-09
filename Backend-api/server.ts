@@ -1,5 +1,4 @@
-import { Request, Response } from 'express';
-import express from 'express';
+import express  from 'express';
 import { json } from 'body-parser';
 import  { Router as hoursWorkedRoutesRouter } from './src/routes/hoursWorkedRoutes';
 import  { Router as studentRoutes } from './src/routes/studentRoutes';
@@ -15,7 +14,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get('/', async (req: Request, res: Response) => {
+app.get('/', async (req, res) => {
     res.send('Welcome')
 })
 
@@ -25,6 +24,6 @@ app.use('/student', studentRoutes);
 
 app.use('/teacher', teacherRoutes);
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log('Server is listening on port 3000');
 });

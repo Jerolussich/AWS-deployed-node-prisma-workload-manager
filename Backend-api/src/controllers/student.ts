@@ -54,18 +54,15 @@ export const updateStudent = async (req: Request, res: Response) => {
 };
 
 export const createStudent = async (req: Request, res: Response) => {
-    
-    const student = await prisma.student.findFirst();
-
-    const attributeList = Object.keys(student || {});
-
-    const data: any = {};
-
-    Object.keys(req.body).forEach((element: string) => {
-        if (attributeList.includes(element)) {
-            data[element] = req.body[element];
-        }
-    });
+    const data = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        birthDate: new Date(req.body.birthDate),
+        country: req.body.country,
+        city: req.body.city,
+        address: req.body.address,
+        tutorId: req.body.tutorId,
+    };
 
     const createStudent = await prisma.student.create({
         data,

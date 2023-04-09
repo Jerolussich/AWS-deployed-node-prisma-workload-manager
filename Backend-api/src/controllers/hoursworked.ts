@@ -55,21 +55,27 @@ export const updateHoursworked = async (req: Request, res: Response) => {
 };
 
 export const createHoursworked = async (req: Request, res: Response) => {
-    
-    const hoursWorked = await prisma.hoursWorked.findFirst();
-    const attributeList = Object.keys(hoursWorked || {});
 
-    const data: any = {};
+    const data: any = {
+        teacherId: req.body.teacherId,
+        studentId: req.body.studentId,
+        hoursJanuary: req.body.hoursJanuary || null,
+        hoursFebruary: req.body.hoursFebruary || null,
+        hoursMarch: req.body.hoursMarch || null,
+        hoursApril: req.body.hoursApril || null,
+        hoursMay: req.body.hoursMay || null,
+        hoursJune: req.body.hoursJune || null,
+        hoursJuly: req.body.hoursJuly || null,
+        hoursAugust: req.body.hoursAugust || null,
+        hoursSeptember: req.body.hoursSeptember || null,
+        hoursOctober: req.body.hoursOctober || null,
+        hoursNovember: req.body.hoursNovember || null,
+        hoursDecember: req.body.hoursDecember || null,
+    };
 
-    Object.keys(req.body).forEach((element: string) => {
-        if (attributeList.includes(element)) {
-            data[element] = req.body[element];
-        }
-    });
-
-    const createHoursworked = await prisma.hoursWorked.create({
+    const createdHoursworked = await prisma.hoursWorked.create({
         data,
     });
 
-    res.json(createHoursworked);
+    res.json(createdHoursworked);
 };

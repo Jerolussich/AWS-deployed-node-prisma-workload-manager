@@ -1,13 +1,18 @@
 {
   "name": "prisma-practice",
-  "proxy": "http://localhost:3000",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.ts",
   "scripts": {
+    "start": "node server.ts",
+    "build": "tsc",
     "dev": "vite",
     "devstart": "nodemon server.ts",
     "dataCreate": "nodemon /home/jerolussich/Personal/node-prisma-workload-manager/prisma/createData.ts"
+  },
+  "engines": {
+    "npm": ">=9.0.0 <10.0.0",
+    "node": ">=14.0.0 <15.0.0"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +26,6 @@
     "nodemon": "^2.0.22",
     "postcss": "^8.4.21",
     "postcss-cli": "^10.1.0",
-    "prisma": "^4.12.0",
     "tailwindcss": "^3.3.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.2"
@@ -31,6 +35,8 @@
     "@types/react": "^18.0.33",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "prisma": "^4.12.0",
     "react": "^18.2.0"
   }
 }
